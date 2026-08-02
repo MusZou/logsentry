@@ -1,0 +1,23 @@
+Aug  1 02:58:41 web-prod-01 sshd[10231]: Accepted publickey for musta from 198.51.100.7 port 51300 ssh2
+Aug  1 03:14:01 web-prod-01 sshd[11042]: Failed password for root from 203.0.113.45 port 40011 ssh2
+Aug  1 03:14:07 web-prod-01 sshd[11044]: Failed password for root from 203.0.113.45 port 40013 ssh2
+Aug  1 03:14:12 web-prod-01 sshd[11046]: Failed password for root from 203.0.113.45 port 40015 ssh2
+Aug  1 03:14:19 web-prod-01 sshd[11048]: Failed password for root from 203.0.113.45 port 40017 ssh2
+Aug  1 03:14:25 web-prod-01 sshd[11050]: Failed password for root from 203.0.113.45 port 40019 ssh2
+Aug  1 03:14:31 web-prod-01 sshd[11052]: Failed password for root from 203.0.113.45 port 40021 ssh2
+Aug  1 03:14:38 web-prod-01 sshd[11054]: Failed password for root from 203.0.113.45 port 40023 ssh2
+Aug  1 03:14:44 web-prod-01 sshd[11056]: Failed password for root from 203.0.113.45 port 40025 ssh2
+Aug  1 03:14:51 web-prod-01 sshd[11058]: Failed password for root from 203.0.113.45 port 40027 ssh2
+Aug  1 03:14:58 web-prod-01 sshd[11060]: Failed password for root from 203.0.113.45 port 40029 ssh2
+Aug  1 03:15:04 web-prod-01 sshd[11062]: Accepted password for root from 203.0.113.45 port 40031 ssh2
+Aug  1 03:41:12 web-prod-01 sshd[12210]: Failed password for invalid user admin from 198.51.100.23 port 55010 ssh2
+Aug  1 03:41:20 web-prod-01 sshd[12212]: Failed password for invalid user test from 198.51.100.23 port 55012 ssh2
+Aug  1 03:41:29 web-prod-01 sshd[12214]: Failed password for invalid user oracle from 198.51.100.23 port 55014 ssh2
+Aug  1 03:41:37 web-prod-01 sshd[12216]: Failed password for invalid user postgres from 198.51.100.23 port 55016 ssh2
+Aug  1 03:41:45 web-prod-01 sshd[12218]: Failed password for invalid user ubuntu from 198.51.100.23 port 55018 ssh2
+Aug  1 03:41:53 web-prod-01 sshd[12220]: Failed password for invalid user ftpuser from 198.51.100.23 port 55020 ssh2
+Aug  1 03:42:01 web-prod-01 sshd[12222]: Failed password for invalid user guest from 198.51.100.23 port 55022 ssh2
+Aug  1 03:42:09 web-prod-01 sshd[12224]: Failed password for invalid user deploy from 198.51.100.23 port 55024 ssh2
+Aug  1 09:02:15 web-prod-01 sshd[15001]: Accepted publickey for musta from 198.51.100.7 port 52110 ssh2
+Aug  1 14:07:33 web-prod-01 sshd[18820]: Failed password for invalid user backup from 192.0.2.88 port 33210 ssh2
+Aug  1 18:20:02 web-prod-01 sshd[20111]: Accepted publickey for musta from 198.51.100.7 port 53400 ssh2
