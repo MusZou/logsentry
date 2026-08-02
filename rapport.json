@@ -1,0 +1,104 @@
+{
+  "logfile": "sample_logs/auth.log.sample",
+  "generated_at": "2026-08-02T19:37:48.075913",
+  "total_events": 23,
+  "distinct_ips": 4,
+  "findings": [
+    {
+      "type": "compromise",
+      "ip": "203.0.113.45",
+      "severity": "critical",
+      "user": "root",
+      "failed_before_success": 10,
+      "success_time": "2026-08-01T03:15:04",
+      "mitre": {
+        "id": "T1078",
+        "name": "Valid Accounts"
+      },
+      "description": "Connexion r\u00e9ussie ('root') depuis 203.0.113.45 apr\u00e8s 10 \u00e9chec(s) \u2014 compte potentiellement compromis."
+    },
+    {
+      "type": "brute_force",
+      "ip": "203.0.113.45",
+      "severity": "high",
+      "count": 10,
+      "window_minutes": 5,
+      "first_seen": "2026-08-01T03:14:01",
+      "last_seen": "2026-08-01T03:14:58",
+      "mitre": {
+        "id": "T1110.001",
+        "name": "Brute Force: Password Guessing"
+      },
+      "description": "10 tentatives de connexion \u00e9chou\u00e9es depuis 203.0.113.45 en moins de 5 min."
+    },
+    {
+      "type": "brute_force",
+      "ip": "198.51.100.23",
+      "severity": "high",
+      "count": 8,
+      "window_minutes": 5,
+      "first_seen": "2026-08-01T03:41:12",
+      "last_seen": "2026-08-01T03:42:09",
+      "mitre": {
+        "id": "T1110.001",
+        "name": "Brute Force: Password Guessing"
+      },
+      "description": "8 tentatives de connexion \u00e9chou\u00e9es depuis 198.51.100.23 en moins de 5 min."
+    },
+    {
+      "type": "enumeration",
+      "ip": "198.51.100.23",
+      "severity": "medium",
+      "count": 8,
+      "users": [
+        "admin",
+        "deploy",
+        "ftpuser",
+        "guest",
+        "oracle",
+        "postgres",
+        "test",
+        "ubuntu"
+      ],
+      "first_seen": "2026-08-01T03:41:12",
+      "last_seen": "2026-08-01T03:42:09",
+      "mitre": {
+        "id": "T1087.001",
+        "name": "Account Discovery: Local Account"
+      },
+      "description": "8 noms d'utilisateur distincts test\u00e9s depuis 198.51.100.23."
+    }
+  ],
+  "timeline": [
+    {
+      "time": "2026-08-01T02:50:00",
+      "failed": 0,
+      "success": 1
+    },
+    {
+      "time": "2026-08-01T03:10:00",
+      "failed": 10,
+      "success": 1
+    },
+    {
+      "time": "2026-08-01T03:40:00",
+      "failed": 8,
+      "success": 0
+    },
+    {
+      "time": "2026-08-01T09:00:00",
+      "failed": 0,
+      "success": 1
+    },
+    {
+      "time": "2026-08-01T14:00:00",
+      "failed": 1,
+      "success": 0
+    },
+    {
+      "time": "2026-08-01T18:20:00",
+      "failed": 0,
+      "success": 1
+    }
+  ]
+}
