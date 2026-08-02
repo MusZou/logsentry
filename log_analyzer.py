@@ -175,6 +175,33 @@ def analyze(events, brute_threshold, enum_threshold, window_minutes):
     return findings
 
 
+def build_timeline(events, bucket_minutes=10):
+    """Agrège les événements par tranche de temps fixe (compteurs échecs/succès).
+
+    On expose des compteurs agrégés plutôt que les événements bruts : rapport
+    plus léger, et on évite de dupliquer des données potentiellement
+    sensibles (IP, users) au-delà de ce qui est déjà dans les findings.
+    """
+    if not events:
+        return []
+
+    bucket = timedelta(minutes=bucket_minutes)
+    events_sorted = sorted(events, key=lambda e: e['ts'])
+    first_ts = events_sorted[0]['ts'].replace(second=0, microsecond=0)
+    first_ts -= timedelta(minutes=first_ts.minute % bucket_minutes)
+
+    buckets = {}
+    for e in events_sorted:
+        offset = int((e['ts'] - first_ts) / bucket)
+        bucket_time = first_ts + offset * bucket
+        key = bucket_time.isoformat()
+        if key not in buckets:
+            buckets[key] = {"time": key, "failed": 0, "success": 0}
+        buckets[key]["failed" if e['event'] == 'failed' else "success"] += 1
+
+    return [buckets[k] for k in sorted(buckets.keys())]
+
+
 def print_report(findings, total_events, ip_count):
     print(f"\nLogSentry — {total_events} événement(s) analysé(s), {ip_count} adresse(s) IP source(s)\n")
 
@@ -211,6 +238,8 @@ def main():
                          help="Nombre de comptes distincts testés déclenchant une alerte d'énumération (défaut : 5)")
     parser.add_argument("--window", type=int, default=5,
                          help="Fenêtre glissante en minutes pour la détection de brute-force (défaut : 5)")
+    parser.add_argument("--bucket-minutes", type=int, default=10,
+                         help="Taille des tranches de temps pour la timeline exportée (défaut : 10)")
     parser.add_argument("-o", "--output", help="Exporter le rapport complet en JSON")
     args = parser.parse_args()
 
@@ -235,6 +264,7 @@ def main():
             "total_events": len(events),
             "distinct_ips": ip_count,
             "findings": findings,
+            "timeline": build_timeline(events, args.bucket_minutes),
         }
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2, default=str)

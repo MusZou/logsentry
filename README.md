@@ -36,6 +36,7 @@ python3 log_analyzer.py /var/log/auth.log -o rapport.json --brute-threshold 8 --
 | `--brute-threshold` | Nb de tentatives échouées déclenchant une alerte brute-force | 5 |
 | `--enum-threshold` | Nb de comptes distincts testés déclenchant une alerte d'énumération | 5 |
 | `--window` | Fenêtre glissante (minutes) pour la détection de brute-force | 5 |
+| `--bucket-minutes` | Taille des tranches de temps pour la timeline exportée en JSON | 10 |
 | `-o, --output` | Export du rapport complet en JSON | aucun |
 
 ## Exemple de sortie
@@ -68,6 +69,11 @@ Le fichier `sample_logs/auth.log.sample` contient 3 scénarios simulés :
 un brute-force réussi (compromission), une énumération de comptes, et
 des connexions légitimes qui ne déclenchent aucune alerte — pratique
 pour vérifier qu'il n'y a pas de faux positif.
+
+En plus des findings, le JSON exporté (`-o`) contient un champ
+`timeline` : des compteurs d'événements (échecs/succès) agrégés par
+tranche de temps, pensés pour être consommés directement par
+[AttackBoard](../attackboard), le dashboard de visualisation associé.
 
 ## Limites connues (assumées, à mentionner en entretien)
 
